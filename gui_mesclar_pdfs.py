@@ -55,7 +55,7 @@ def coletar_pdfs(caminho_entrada):
 def main():
     layout = [
         [sg.Text('Selecione os arquivos PDF a serem mesclados ou diretórios contendo PDFs:')],
-        [sg.Input(key='arquivos', enable_events=True), sg.FilesBrowse(button_text='Selecionar Arquivos')],
+        [sg.Input(key='arquivos', enable_events=True), sg.FilesBrowse(button_text='Selecionar Arquivos', file_types=(('PDF Files', '*.pdf'),))],
         [sg.Text('Caminho do arquivo PDF de saída:')],
         [sg.Input(key='saida'), sg.FileSaveAs(button_text='Selecionar Pasta')],
         [sg.Button('Mesclar PDFs', size=(15, 2))]
