@@ -58,7 +58,7 @@ def main():
         [sg.Input(key='arquivos', enable_events=True), sg.FilesBrowse(button_text='Selecionar Arquivos', file_types=(('PDF Files', '*.pdf'),))],
         [sg.Text('Caminho do arquivo PDF de saída:')],
         [sg.Input(key='saida'), sg.FileSaveAs(button_text='Selecionar Pasta')],
-        [sg.Button('Mesclar PDFs', size=(15, 2))]
+        [sg.Button('Mesclar PDFs', size=(15, 2)), sg.Button('Limpar', size=(10, 2))]
     ]
 
     janela = sg.Window('Mesclar PDFs', layout)
@@ -73,6 +73,10 @@ def main():
             arquivos_entrada = coletar_pdfs(valores['arquivos'].split(';'))
             caminho_saida = obter_caminho_saida(valores['saida'])
             mesclar_pdfs(arquivos_entrada, caminho_saida)
+
+        if evento == 'Limpar':
+            janela['arquivos'].update('')
+            janela['saida'].update('')
 
     janela.close()
 
