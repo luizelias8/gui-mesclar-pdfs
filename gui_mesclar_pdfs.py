@@ -69,6 +69,13 @@ def main():
         if evento == sg.WIN_CLOSED:
             break
 
+        if evento == 'arquivos':
+            arquivos_entrada = coletar_pdfs(valores['arquivos'].split(';'))
+            if arquivos_entrada:
+                diretorio_primeiro_pdf = os.path.dirname(arquivos_entrada[0])
+                caminho_padrao_saida = os.path.join(diretorio_primeiro_pdf, 'mesclado.pdf')
+                janela['saida'].update(caminho_padrao_saida)
+
         if evento == 'Mesclar PDFs':
             arquivos_entrada = coletar_pdfs(valores['arquivos'].split(';'))
             caminho_saida = obter_caminho_saida(valores['saida'])
